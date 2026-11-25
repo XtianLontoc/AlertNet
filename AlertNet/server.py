@@ -263,13 +263,29 @@ def create_reading(reading: SensorReading):
     ))
     conn.commit()
 
-    # --- AUTOMATIC FLAME RESPONSE ---
-    if reading.flame_detected:
-        conn.execute("""
-            UPDATE device_control 
-            SET pump = 1, alarm = 1, updated_at = CURRENT_TIMESTAMP
-            WHERE device_id = ?
-        """, (reading.device_id,))
+    # --- AUTOMATIC RESPONSE & RESET ---
+    control_row = conn.execute(
+        "SELECT manual_override FROM device_control WHERE device_id = ?", 
+        (reading.device_id,)
+    ).fetchone()
+    
+    is_manual = bool(control_row["manual_override"]) if control_row else False
+
+    if not is_manual:
+        if reading.flame_detected or reading.hazard_detected:
+            # Turn ON pump and alarm if there is a fire/hazard
+            conn.execute("""
+                UPDATE device_control 
+                SET pump = 1, alarm = 1, updated_at = CURRENT_TIMESTAMP
+                WHERE device_id = ?
+            """, (reading.device_id,))
+        else:
+            # Turn OFF pump and alarm if everything is safe
+            conn.execute("""
+                UPDATE device_control 
+                SET pump = 0, alarm = 0, updated_at = CURRENT_TIMESTAMP
+                WHERE device_id = ?
+            """, (reading.device_id,))
         conn.commit()
 
     reading_id = cursor.lastrowid
