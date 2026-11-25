@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#0a1120">
+    <title>AlertNet | Fire Response System</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="loader" id="loader" role="status" aria-live="polite" aria-label="Loading AlertNet">
+    <div class="loader-inner">
+        
+        <!-- Horizontal Brand Header -->
+        <div class="loader-brand">
+            <<div class="loader-mark">
+    <div class="pixel-flame"></div>
+</div>
+            <div class="loader-text">
+                <h1 class="loader-title">ALERTNET</h1>
+                <p class="loader-subtitle">Centralized Hazard &amp; Fire Response System</p>
+            </div>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="loader-progress">
+            <div class="loader-meta">
+                <span id="loaderStatus">Starting up…</span>
+                <span id="loaderPct">0%</span>
+            </div>
+            <div class="loader-track"><span id="loaderBar"></span></div>
+        </div>
+
+        <!-- Project Members -->
+        <div class="loader-members">
+            <span class="loader-members-label">Project Members</span>
+            <ul>
+                <li>Allen Jomes Beronio</li>
+                <li>Christian Jay Lontoc</li>
+                <li>Diosamabel Penaso</li>
+                <li>Earl Vincent Pilayre</li>
+                <li>Mariel Ramiso</li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+
+<aside class="sidebar">
+    <div class="logo">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2c1 4 5 6 5 11a5 5 0 0 1-10 0c0-2 1-3 2-4 0 2 1 3 2 3 0-4-1-6 1-10z"/></svg>
+        <span>AlertNet</span>
+    </div>
+    <nav class="nav" aria-label="Sections">
+        <a href="#overview" aria-current="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>Overview</span></a>
+        <a href="#trends"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="m7 15 4-5 3 3 5-7"/></svg><span>Trends</span></a>
+        <a href="#controls"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"/></svg><span>Controls</span></a>
+        <a href="#history"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.9 1.9 0 0 0 3.4 0"/></svg><span>History</span></a>
+        <a href="#settings"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg><span>Settings</span></a>
+    </nav>
+</aside>
+
+<!-- Alarm bar -->
+<div class="alarmbar" id="systemStatus" data-state="unknown" role="status" aria-live="polite">
+    <div class="alarm-main">
+        <span class="alarm-icon" id="statusIcon" aria-hidden="true">?</span>
+        <div>
+            <strong id="statusText">Checking system</strong>
+            <span id="statusDetail">Waiting for the first update.</span>
+        </div>
+    </div>
+    <div class="alarm-side">
+        <span id="alarmBadges" class="badges"></span>
+        <span class="connection" id="connection" data-state="connecting">
+            <i class="dot"></i><span id="connectionText">Connecting</span>
+        </span>
+        <button type="button" class="lock-btn silence-btn" id="silenceBtn" hidden>Silence alarm</button>
+        <button type="button" class="lock-btn" id="alertBtn" data-state="off" aria-pressed="false">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.9 1.9 0 0 0 3.4 0"/></svg>
+            <span id="alertText">Alerts off</span>
+        </button>
+        <button type="button" class="lock-btn" id="lockBtn" data-state="locked" hidden>
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+            <span id="lockText">Locked</span>
+        </button>
+    </div>
+</div>
+
+<header class="topbar">
+    <div class="brand">
+        <h1 id="viewTitle">Overview</h1>
+        <p>Hazard and fire response, device <span id="deviceId">alertnet01</span></p>
+    </div>
+    <div class="controls">
+        <select id="rangeSelect" aria-label="Time range">
+            <option value="15">Last 15 minutes</option>
+            <option value="60" selected>Last hour</option>
+            <option value="360">Last 6 hours</option>
+            <option value="1440">Last 24 hours</option>
+        </select>
+        <select id="autoSelect" aria-label="Auto-refresh interval">
+            <option value="3000" selected>Real Time</option>
+            <option value="5000">Refresh every 5 s</option>
+            <option value="10000">Refresh every 10 s</option>
+        </select>
+        <button type="button" class="icon-btn" id="refreshBtn" aria-label="Refresh now">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 0 0-15.5-6.3L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 15.5 6.3L21 16"/><path d="M16 16h5v5"/></svg>
+        </button>
+    </div>
+</header>
+
+<main class="container">
+
+    <div class="view" data-view="overview">
+    <section class="panel setup" id="setupCard" hidden>
+        <header class="panel-head">
+            <h2>Connect your device</h2>
+            <span class="stats">Waiting for the first reading</span>
+        </header>
+        <div class="setup-body">
+            <div>
+                <p>Live values appear here as soon as your ESP32 starts sending readings. Until then, the cards below stay empty. This page updates by itself. Optionally, the ESP32 can also send <code>wifi_rssi</code> (signal strength in dBm) and <code>uptime_s</code> (seconds since it booted) to fill in the Device health panel.</p>
+                <ol>
+                    <li>Power the ESP32 and connect it to Wi-Fi.</li>
+                    <li>Have it send the JSON shown here every few seconds.</li>
+                    <li>Send it to the address shown here with a POST request. If an access key is set, add it as an <code>X-API-Key</code> header.</li>
+                </ol>
+            </div>
+            <div>
+                <div class="code-head"><span>POST address</span><button type="button" class="btn" id="copyUrl">Copy address</button></div>
+                <pre class="code" id="setupUrl"></pre>
+                <pre class="code sample">{
+  "device_id": "alertnet01",
+  "temperature": 27.4,
+  "humidity": 61.2,
+  "gas_level": 310,
+  "flame_detected": false,
+  "scan_angle": 120,
+  "hazard_detected": false
+}</pre>
+            </div>
+        </div>
+    </section>
+
+    <h2 class="section">Summary</h2>
+    <section class="tiles" aria-label="Current readings">
+        <article class="tile" id="tempCard">
+    <div class="tile-head"><span class="pix temp" aria-hidden="true"></span>Temperature</div>
+    <strong class="value" id="temperature">--</strong>
+    <svg class="spark" id="sparkTemp" viewBox="0 0 100 36" preserveAspectRatio="none"></svg>
+    <small id="tempNote">Limit 58 °C</small>
+</article>
+
+<article class="tile" id="gasCard">
+    <div class="tile-head"><span class="pix gas" aria-hidden="true"></span>Gas level</div>
+    <strong class="value" id="gasLevel">--</strong>
+    <svg class="spark" id="sparkGas" viewBox="0 0 100 36" preserveAspectRatio="none"></svg>
+    <small id="gasNote">Limit 750</small>
+</article>
+
+<article class="tile calm" id="humCard">
+    <div class="tile-head"><span class="pix hum" aria-hidden="true"></span>Humidity</div>
+    <strong class="value" id="humidity">--</strong>
+    <svg class="spark" id="sparkHum" viewBox="0 0 100 36" preserveAspectRatio="none"></svg>
+    <small>Relative humidity</small>
+</article>
+
+<article class="tile" id="flameCard">
+    <div class="tile-head"><span class="pix flame" aria-hidden="true"></span>Flame</div>
+    <strong class="value" id="flameStatus">--</strong>
+    <span class="flame-ind"><i></i></span>
+    <small>Updated <span id="lastUpdate">--</span></small>
+</article>
+    </section>
+
+
+    <div class="split">
+        <section class="panel">
+            <header class="panel-head"><h2>Scanner</h2></header>
+            <div class="radar-wrap">
+                <div class="radar" role="img" aria-label="Scanner position">
+                    <span class="mark n">0°</span><span class="mark e">90°</span>
+                    <span class="mark s">180°</span><span class="mark w">270°</span>
+                    <div class="target" id="targetMarker" hidden></div>
+                    <div class="sweep" id="scannerLine"></div>
+                    <span class="hub"></span>
+                </div>
+                <p class="angle">Pointing at <strong id="scannerAngle">--°</strong></p>
+            </div>
+        </section>
+
+        <section class="panel">
+    <header class="panel-head"><h2>Response system</h2></header>
+    <dl class="rows">
+        <div><dt><span class="pix pump" aria-hidden="true"></span>Water pump</dt><dd id="pumpStatus" class="chip">--</dd></div>
+        <div><dt><span class="pix bell" aria-hidden="true"></span>Alarm</dt><dd id="alarmStatus" class="chip">--</dd></div>
+        <div><dt><span class="pix clock" aria-hidden="true"></span>Mode</dt><dd id="modeStatus" class="chip">--</dd></div>
+        <div><dt>Target angle</dt><dd id="targetAngle">--°</dd></div>
+        <div><dt>Hazard detection</dt><dd id="hazardStatus">--</dd></div>
+    </dl>
+</section>
+    </div>
+        <section class="panel" id="healthPanel">
+            <header class="panel-head"><h2>Device health</h2></header>
+            <div class="health-grid">
+                <div><span>Status</span><strong id="hStatus">--</strong></div>
+                <div><span>Last seen</span><strong id="hSeen">--</strong></div>
+                <div><span>Reports every</span><strong id="hInterval">--</strong></div>
+                <div><span>Online for</span><strong id="hSince">--</strong></div>
+                <div><span>Availability (24 h)</span><strong id="hAvail">--</strong></div>
+                <div><span>Outages (24 h)</span><strong id="hOutages">--</strong></div>
+                <div><span>Wi-Fi signal</span><strong id="hRssi">--</strong></div>
+                <div><span>Device uptime</span><strong id="hUptime">--</strong></div>
+            </div>
+            <p class="note storage-note" id="hLast"></p>
+        </section>
+    </div>
+
+    <div class="view" data-view="trends" hidden>
+    <section class="charts">
+        <article class="panel">
+            <header class="panel-head">
+                <div><h2>Temperature</h2><strong class="big" id="bigTemp">--</strong></div>
+                <span class="stats" id="statsTemp"></span>
+            </header>
+            <div class="chart" id="chartTemp"></div>
+        </article>
+        <article class="panel">
+            <header class="panel-head">
+                <div><h2>Gas level</h2><strong class="big" id="bigGas">--</strong></div>
+                <span class="stats" id="statsGas"></span>
+            </header>
+            <div class="chart" id="chartGas"></div>
+        </article>
+    </section>
+    </div>
+
+    <div class="view" data-view="controls" hidden>
+        <p class="lock-note" hidden>
+            <span>Locked. Viewing is open to everyone, but changes need the access key.</span>
+            <button type="button" class="btn unlock-link">Unlock</button>
+        </p>
+        <section class="panel">
+            <header class="panel-head">
+                <h2>Manual control</h2>
+                <span class="stats" id="ctlState"></span>
+            </header>
+            <div class="ctrl">
+                <label class="switch-row">
+                    <span><b>Manual override</b><small>Turn on to run the pump and alarm yourself. Turn off to hand control back to the device.</small></span>
+                    <input type="checkbox" role="switch" id="ctlManual">
+                </label>
+                <label class="switch-row">
+                    <span><b>Water pump</b><small>Only available in manual override.</small></span>
+                    <input type="checkbox" role="switch" id="ctlPump">
+                </label>
+                <label class="switch-row">
+                    <span><b>Alarm</b><small>Only available in manual override.</small></span>
+                    <input type="checkbox" role="switch" id="ctlAlarm">
+                </label>
+                <div class="angle-row">
+                    <label for="ctlAngle"><b>Target angle</b></label>
+                    <output id="ctlAngleOut" for="ctlAngle">0°</output>
+                    <input type="range" id="ctlAngle" min="0" max="359" step="1" value="0">
+                </div>
+                <div class="ctrl-actions">
+                    <button type="button" class="btn primary" id="ctlSend">Send to device</button>
+                    <button type="button" class="btn" id="ctlReset">Return to automatic</button>
+                    <span id="ctlMsg" role="status"></span>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="view" data-view="history" hidden>
+    <section class="panel">
+        <header class="panel-head">
+            <h2>Hazard history</h2>
+            <div class="head-tools">
+            <input type="search" id="eventSearch" placeholder="Search events" aria-label="Search events">
+            <button type="button" class="btn" id="csvBtn">Download CSV</button>
+            <select id="severityFilter" aria-label="Filter by severity">
+                <option value="all">All severities</option>
+                <option value="critical">Critical</option>
+                <option value="high">High</option>
+                <option value="warning">Warning</option>
+                <option value="medium">Medium</option>
+            </select>
+            </div>
+        </header>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr><th>Priority</th><th>Time</th><th>Event</th><th>Severity</th>
+                        <th>Temp</th><th>Gas</th><th>Angle</th><th>Action taken</th></tr>
+                </thead>
+                <tbody id="eventTable">
+                    <tr class="empty"><td colspan="8">Loading events...</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+    </div>
+
+    <div class="view" data-view="settings" hidden>
+        <p class="lock-note" hidden>
+            <span>Locked. Viewing is open to everyone, but changes need the access key.</span>
+            <button type="button" class="btn unlock-link">Unlock</button>
+        </p>
+        <section class="panel">
+            <header class="panel-head">
+                <h2>Safety limits</h2>
+                <span class="stats" id="setMsg" role="status"></span>
+            </header>
+            <form class="ctrl" id="settingsForm">
+                <div class="field">
+                    <label for="setTemp">Temperature limit (°C)</label>
+                    <input type="number" id="setTemp" min="30" max="150" step="0.5" required>
+                    <small>A reading at or above this temperature is reported as a hazard. Allowed range: 30 to 150.</small>
+                </div>
+                <div class="field">
+                    <label for="setGas">Gas limit (MQ-2 reading)</label>
+                    <input type="number" id="setGas" min="50" max="10000" step="10" required>
+                    <small>A gas reading at or above this level is reported as a hazard. Raw values depend on your sensor and wiring, so adjust after testing. Allowed range: 50 to 10000.</small>
+                </div>
+                <div class="ctrl-actions">
+                    <button type="submit" class="btn primary" id="setSave">Save limits</button>
+                    <button type="button" class="btn" id="setReset">Restore defaults</button>
+                </div>
+                <p class="note">These limits drive the status bar, the cards and the chart limit lines. If your ESP32 decides hazards in its own code, update the limits there too.</p>
+            </form>
+        </section>
+
+        <section class="panel">
+            <header class="panel-head"><h2>Connection details</h2></header>
+            <dl class="rows">
+                <div><dt>Device ID</dt><dd id="setDevice">--</dd></div>
+                <div><dt>Readings address</dt><dd id="setUrl" class="mono">--</dd></div>
+                <div><dt>Access key</dt><dd id="setAuth">--</dd></div>
+            </dl>
+        </section>
+
+        <section class="panel">
+            <header class="panel-head"><h2>Data storage</h2></header>
+            <dl class="rows">
+                <div><dt>Stored readings</dt><dd id="stReadings">--</dd></div>
+                <div><dt>Oldest reading</dt><dd id="stOldest">--</dd></div>
+                <div><dt>Readings kept for</dt><dd id="stKeep">--</dd></div>
+                <div><dt>Hazard events kept for</dt><dd id="stEvKeep">--</dd></div>
+                <div><dt>Database size</dt><dd id="stSize">--</dd></div>
+            </dl>
+            <p class="note storage-note">Readings older than the retention period are deleted automatically. Change it with the READINGS_RETENTION_DAYS and EVENTS_RETENTION_DAYS environment variables (0 keeps everything).</p>
+        </section>
+
+        <section class="panel">
+            <header class="panel-head"><h2>Alerts</h2></header>
+            <dl class="rows">
+                <div><dt>Browser alerts</dt><dd id="alertStatus">--</dd></div>
+            </dl>
+            <div class="ctrl-actions alert-actions">
+                <button type="button" class="btn" id="alertTest">Send test alert</button>
+            </div>
+            <p class="note storage-note">When a hazard starts, alerts play a siren and show a notification, and the browser tab title shows "(!)". They only work while this page is open in a browser tab, and they don't replace a smoke alarm or fire alarm.</p>
+        </section>
+    </div>
+
+    <footer><p>AlertNet device <span id="footerDevice">alertnet01</span></p></footer>
+</main>
+
+<dialog id="keyDialog" class="dialog" aria-labelledby="keyTitle">
+    <form id="keyForm">
+        <h2 id="keyTitle">Unlock changes</h2>
+        <p>Enter the access key to change controls and settings. Viewing the dashboard doesn't need it.</p>
+        <label for="keyInput">Access key</label>
+        <input type="password" id="keyInput" autocomplete="off" required>
+        <p id="keyMsg" role="alert"></p>
+        <div class="ctrl-actions">
+            <button type="submit" class="btn primary">Unlock</button>
+            <button type="button" class="btn" id="keyCancel">Cancel</button>
+        </div>
+    </form>
+</dialog>
+
+<script src="app.js"></script>
+</body>
+</html>

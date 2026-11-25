@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: alertnet-api
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    # Bind to 0.0.0.0 and use Render's $PORT variable
+    startCommand: uvicorn server:app --host 0.0.0.0 --port $PORT
+    # Attach a disk so your SQLite database survives restarts
+    disk:
+      name: alertnet-data
+      mountPath: /data
+      sizeGB: 1
+    # Tell your app where the database file is
+    envVars:
+      - key: DB_PATH
+        value: /data/alertnet.db
